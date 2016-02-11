@@ -1,0 +1,6 @@
+{
+  "name": "SearchPage",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./SearchPage.js"
+}
