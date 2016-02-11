@@ -28,7 +28,7 @@ class SearchPage extends Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>{title}</h1>
+          <h1>Thangs</h1>
         </div>
       </div>
     );
