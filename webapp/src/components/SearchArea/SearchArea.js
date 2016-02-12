@@ -54,13 +54,14 @@ class SearchArea extends Component {
 
     return (
       <div className={s.root}>
-        <input type="text" placeholder="Search..." onKeyPress = {this._handleKeyPress}/>
-        <ul>
+        <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress}/>
+        <p/>
+        <div>
           {this.state.results.map(function(result) {
-            return <Result result={result}/>
+            return <Result key={result.id} result={result}/>
           }.bind(this))
           }
-        </ul>
+        </div>
       </div>
     );
   }

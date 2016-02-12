@@ -32,10 +32,10 @@ class Result extends Component {
     const seconds = Number(result.startTime.slice(6,8));
     const index = (minutes * 60) + seconds;
     const src = "http://localhost:8000/" + result.episode + "/" + index + ".jpg";
-    return <li key={result.id}>
-      <img src={src} width="400px"/>
-      <p>{result.text}</p>
-    </li>
+
+    return <div key={result.id} style={{backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, position: 'relative', width: '400px', height: '225px'}}>
+      <p style={{position: 'absolute', bottom: 0, textAlign: 'center', color: 'white'}}>{result.text}</p>
+    </div>
   }
 
 }
