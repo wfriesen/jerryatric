@@ -54,7 +54,7 @@ class SearchArea extends Component {
 
     return (
       <div className={s.root}>
-        <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress}/>
+        <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress} style={{width: '100%'}}/>
         <p/>
         <div>
           {this.state.results.map(function(result) {

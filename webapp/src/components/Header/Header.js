@@ -21,7 +21,7 @@ class Header extends Component {
       <div className={s.root}>
         <div className={s.container}>
           <div className={s.banner}>
-            <h1 className={s.bannerTitle}>Jerryatric</h1>
+            <h1 className={s.bannerTitle}>The Jerryatric</h1>
           </div>
         </div>
       </div>
