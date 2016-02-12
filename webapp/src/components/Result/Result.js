@@ -28,13 +28,14 @@ class Result extends Component {
 
   render() {
     const result = this.props.result;
+    const key = result.episode + ':' + result.id
     const minutes = Number(result.startTime.slice(3,5));
     const seconds = Number(result.startTime.slice(6,8));
     const index = (minutes * 60) + seconds;
     const src = "http://localhost:8000/" + result.episode + "/" + index + ".jpg";
 
-    return <div key={result.id} style={{backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, position: 'relative', width: '400px', height: '225px'}}>
-      <p style={{position: 'absolute', bottom: 0, textAlign: 'center', color: 'white'}}>{result.text}</p>
+    return <div key={key} style={{backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, position: 'relative', width: '400px', height: '225px'}}>
+      <p style={{position: 'relative', textAlign: 'center', color: 'white'}}>{result.text}</p>
     </div>
   }
 
