@@ -10,6 +10,7 @@
 import React, { Component, PropTypes } from 'react';
 import s from './SearchPage.scss';
 import withStyles from '../../decorators/withStyles';
+import SearchArea from '../SearchArea';
 
 const title = 'Jerryatric';
 
@@ -28,7 +29,8 @@ class SearchPage extends Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>Thangs</h1>
+          <p/>
+          <SearchArea />
         </div>
       </div>
     );
