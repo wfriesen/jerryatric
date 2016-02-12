@@ -11,6 +11,7 @@ import React, { Component, PropTypes } from 'react';
 import s from './SearchArea.scss';
 import withStyles from '../../decorators/withStyles';
 import axios from 'axios';
+import Result from '../Result';
 
 @withStyles(s)
 class SearchArea extends Component {
@@ -56,15 +57,7 @@ class SearchArea extends Component {
         <input type="text" placeholder="Search..." onKeyPress = {this._handleKeyPress}/>
         <ul>
           {this.state.results.map(function(result) {
-            if (result === undefined ) return;
-            const minutes = Number(result.startTime.slice(3,5));
-            const seconds = Number(result.startTime.slice(6,8));
-            const index = (minutes * 60) + seconds;
-            const src = "http://localhost:8000/" + result.episode + "/" + index + ".jpg";
-            return <li key={result.id}>
-              <img src={src} width="400px"/>
-              <p>{result.text}</p>
-            </li>
+            return <Result result={result}/>
           }.bind(this))
           }
         </ul>
