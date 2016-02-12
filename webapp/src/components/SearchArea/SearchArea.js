@@ -53,7 +53,7 @@ class SearchArea extends Component {
   render() {
 
     return (
-      <div className={s.root}>
+      <div className={s.root} style={{width: '100%'}}>
         <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress} style={{width: '100%'}}/>
         <p/>
         <div>

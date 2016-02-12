@@ -41,7 +41,7 @@ class Result extends Component {
     const text = this.strip(result.text);
     const src = "http://localhost:8000/" + result.episode + "/" + index + ".jpg";
 
-    return <div key={key} style={{backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, position: 'relative', width: '400px', height: '225px'}}>
+    return <div key={key} style={{float: 'left', backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, marginRight: 20, position: 'relative', width: '400px', height: '225px'}}>
       <p style={{position: 'absolute', bottom: 0, display: 'block', width: '100%', textAlign: 'center', color: 'white'}}>{text}</p>
     </div>
   }
