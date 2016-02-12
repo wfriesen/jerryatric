@@ -35,7 +35,7 @@ class Result extends Component {
     const src = "http://localhost:8000/" + result.episode + "/" + index + ".jpg";
 
     return <div key={key} style={{backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, position: 'relative', width: '400px', height: '225px'}}>
-      <p style={{position: 'relative', textAlign: 'center', color: 'white'}}>{result.text}</p>
+      <p style={{position: 'absolute', bottom: 0, display: 'block', width: '100%', textAlign: 'center', color: 'white'}}>{result.text}</p>
     </div>
   }
 
