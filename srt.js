@@ -1,7 +1,5 @@
 var parser = require('subtitles-parser');
-var http = require('http');
 var fs = require('fs');
-var execSync = require('child_process').execSync;
 
 var fileList = fs.readdir('./subs', function(err, files) {
   files.forEach(function(file) {
