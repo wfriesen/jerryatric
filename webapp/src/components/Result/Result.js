@@ -18,14 +18,6 @@ class Result extends Component {
     super(props)
   }
 
-  static propTypes = {
-    maxLines: PropTypes.number,
-  };
-
-  static defaultProps = {
-    maxLines: 1,
-  };
-
   strip (html) {
      var tmp = document.createElement("DIV");
      tmp.innerHTML = html;
