@@ -24,14 +24,6 @@ class SearchArea extends Component {
     }
   }
 
-  static propTypes = {
-    maxLines: PropTypes.number,
-  };
-
-  static defaultProps = {
-    maxLines: 1,
-  };
-
   _handleKeyPress(e) {
     if (e.key === 'Enter') {
 
@@ -53,8 +45,8 @@ class SearchArea extends Component {
   render() {
 
     return (
-      <div className={s.root} style={{width: '100%'}}>
-        <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress} style={{width: '100%'}}/>
+      <div className={s.root}>
+        <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress}/>
         <p/>
         <div>
           {this.state.results.map(function(result) {
