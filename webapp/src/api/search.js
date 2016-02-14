@@ -5,17 +5,21 @@ import escapeElastic from 'elasticsearch-sanitize';
 const router = new Router();
 
 router.get('/', async (req, res, next) => {
-  try {
-    const q = encodeURIComponent(escapeElastic(req.query.q));
-    const searchUrl = 'http://localhost:9200/seinfeld/_search?q=text:' + q;
-    const response = await fetch(searchUrl);
-    const content = await response.json();
-    const results = content.hits.hits.map(function getResultObject(hit) {
-      return hit._source;
-    });
-    res.status(200).send({ results });
-  } catch (err) {
-    next(err);
+  const q = encodeURIComponent(escapeElastic(req.query.q));
+  if (q.length === 0) {
+    res.status(200).send({ results: [] });
+  } else {
+    try {
+      const searchUrl = 'http://localhost:9200/seinfeld/_search?q=text:' + q;
+      const response = await fetch(searchUrl);
+      const content = await response.json();
+      const results = content.hits.hits.map(function getResultObject(hit) {
+        return hit._source;
+      });
+      res.status(200).send({ results });
+    } catch (err) {
+      next(err);
+    }
   }
 });
 

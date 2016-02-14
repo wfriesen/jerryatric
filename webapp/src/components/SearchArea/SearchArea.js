@@ -24,19 +24,29 @@ class SearchArea extends Component {
     };
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
   _handleKeyPress(e) {
-    if (e.key === 'Enter') {
-      const query = e.target.value;
-      if (query) {
-        axios.get('/api/search?q=' + query)
-          .then(function processResponse(response) {
-            this.setState({
-              results: response.data.results,
+    if (e.target.value === this.query) {
+      return;
+    }
+    this.query = e.target.value;
+    if (this.query) {
+      clearTimeout(this.timer);
+      if (this.query.length !== 0) {
+        this.timer = setTimeout(() => {
+          axios.get('/api/search?q=' + this.query)
+            .then(function processResponse(response) {
+              this.setState({
+                results: response.data.results,
+              });
+            }.bind(this))
+            .catch(function error(response) {
+              console.log(response);
             });
-          }.bind(this))
-          .catch(function error(response) {
-            console.log(response);
-          });
+        }.bind(this), 300);
       }
     }
   }
@@ -44,7 +54,7 @@ class SearchArea extends Component {
   render() {
     return (
       <div className={s.root}>
-        <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress}/>
+        <input type="text" placeholder="Search..." onKeyUp={this._handleKeyPress}/>
         <p/>
         <div>
           {this.state.results.map(function getResult(result) {
