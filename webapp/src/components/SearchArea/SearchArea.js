@@ -26,18 +26,18 @@ class SearchArea extends Component {
 
   _handleKeyPress(e) {
     if (e.key === 'Enter') {
-      axios.get('http://localhost:9200/seinfeld/_search?q=text:' + e.target.value)
-        .then(function processResponse(response) {
-          const results = response.data.hits.hits.map(function getResultObject(hit) {
-            return hit._source;
+      const query = e.target.value;
+      if (query) {
+        axios.get('/api/search?q=' + query)
+          .then(function processResponse(response) {
+            this.setState({
+              results: response.data.results,
+            });
+          }.bind(this))
+          .catch(function error(response) {
+            console.log(response);
           });
-          this.setState({
-            results,
-          });
-        }.bind(this))
-        .catch(function error(response) {
-          console.log(response);
-        });
+      }
     }
   }
 

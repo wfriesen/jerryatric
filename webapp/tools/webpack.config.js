@@ -70,6 +70,7 @@ const config = {
         include: [
           path.resolve(__dirname, '../node_modules/react-routing/src'),
           path.resolve(__dirname, '../node_modules/axios'),
+          path.resolve(__dirname, '../node_modules/elasticsearch-sanitize'),
           path.resolve(__dirname, '../src'),
         ],
         loader: 'babel-loader',
