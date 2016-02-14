@@ -7,7 +7,7 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import s from './SearchArea.scss';
 import withStyles from '../../decorators/withStyles';
 import axios from 'axios';
@@ -17,41 +17,39 @@ import Result from '../Result';
 class SearchArea extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this._handleKeyPress = this._handleKeyPress.bind(this);
     this.state = {
-      results: []
-    }
+      results: [],
+    };
   }
 
   _handleKeyPress(e) {
     if (e.key === 'Enter') {
-
       axios.get('http://localhost:9200/seinfeld/_search?q=text:' + e.target.value)
-        .then(function (response) {
-          const results = response.data.hits.hits.map(function(hit) {
+        .then(function processResponse(response) {
+          const results = response.data.hits.hits.map(function getResultObject(hit) {
             return hit._source;
           });
           this.setState({
-            results: results
+            results,
           });
         }.bind(this))
-        .catch(function (response) {
+        .catch(function error(response) {
           console.log(response);
         });
     }
   }
 
   render() {
-
     return (
       <div className={s.root}>
         <input type="text" placeholder="Search..." onKeyPress={this._handleKeyPress}/>
         <p/>
         <div>
-          {this.state.results.map(function(result) {
-            return <Result key={result.id} result={result}/>
-          }.bind(this))
+          {this.state.results.map(function getResult(result) {
+            return <Result key={result.id} result={result}/>;
+          })
           }
         </div>
       </div>
