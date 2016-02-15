@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     res.status(200).send({ results: [] });
   } else {
     try {
-      const searchUrl = 'http://localhost:9200/seinfeld/_search?q=text:' + q;
+      const searchUrl = 'http://localhost:9200/jerryatric/_search?q=text:' + q;
       const response = await fetch(searchUrl);
       const content = await response.json();
       const results = content.hits.hits.map(function getResultObject(hit) {

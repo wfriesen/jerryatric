@@ -26,16 +26,11 @@ class Result extends Component {
 
   render() {
     const result = this.props.result;
-    const key = result.episode + ':' + result.id;
-    const minutes = Number(result.startTime.slice(3, 5));
-    const seconds = Number(result.startTime.slice(6, 8));
-    const index = (minutes * 60) + seconds;
-    const text = this.strip(result.text);
-    const src = 'http://localhost:8000/' + result.episode + '/' + index + '.jpg';
+    const src = 'http://localhost:8000/' + result.episode + '/' + result.seconds + '.jpg';
 
     return (
-      <div key={key} style={{ float: 'left', backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, marginRight: 20, position: 'relative', width: '400px', height: '225px' }}>
-        <p style={{ position: 'absolute', bottom: 0, display: 'block', width: '100%', textAlign: 'center', color: 'white' }}>{text}</p>
+      <div style={{ float: 'left', backgroundImage: 'url(' + src + ')', backgroundSize: 'cover', marginTop: 20, marginRight: 20, position: 'relative', width: '400px', height: '225px' }}>
+        <p style={{ position: 'absolute', bottom: 0, display: 'block', width: '100%', textAlign: 'center', color: 'white' }}>{result.text}</p>
       </div>
     );
   }

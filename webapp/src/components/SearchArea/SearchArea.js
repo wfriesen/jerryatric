@@ -58,7 +58,7 @@ class SearchArea extends Component {
         <p/>
         <div>
           {this.state.results.map(function getResult(result) {
-            return <Result key={[result.episode, result.id].join(':')} result={result}/>;
+            return <Result key={[result.episode, result.srtId].join(':')} result={result}/>;
           })
           }
         </div>

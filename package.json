@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/wfriesen/jerryatric#readme",
   "dependencies": {
+    "htmlstrip-native": "0.1.3",
     "subtitles-parser": "0.0.2"
   }
 }
